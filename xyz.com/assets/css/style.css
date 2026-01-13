@@ -1,0 +1,12 @@
+#heading {
+  color: #f375c2;
+  background-color: #313647;
+}
+.heading {
+  border-radius: 5px;
+  padding: 20px;
+}
+.section-heading {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
