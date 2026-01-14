@@ -3,7 +3,7 @@
 <head>
     <title>Document</title>
     <style>
-        label {
+        .input-name {
             display: block;
 
             /* top, right, bottom, left */
@@ -15,20 +15,39 @@
             /* on all side */
             /* margin: 12px; */
         }
+
+
     </style>
 </head>
 <body>
     <h1>Form tags</h1>
     <form>
-        <label> Student name </label>
+        <label class="input-name"> Student name </label>
         <input type="text" placeholder="Enter your name">
 
-        <label> Email address </label>
+        <label class="input-name"> Email address </label>
         <input type="email" placeholder="Enter your email">
         
-        <label> Password </label>
+        <label class="input-name"> Password </label>
         <input type="password" placeholder="Enter your password">
 
+        <label class="input-name"> Gender </label>
+
+        <input type="radio" name="gender" id="male">
+        <label class="gender" for="male">Male</label>
+        <input type="radio" name="gender" id="female">
+        <label class="gender" for="female">Female</label>
+
+        <label class="input-name"> Select short courses </label>
+        <input type="checkbox" id="aiml">
+        <label for="aiml">AI/ML</label>
+        <input type="checkbox" id="uiux">
+        <label for="uiux">UI/UX</label>
+        <input type="checkbox" id="mern-stack">
+        <label for="mern-stack">MERN Stack</label>
+
+        <label for="" class="input-name"> Select Date: </label>
+        <input type="datetime-local">
         
     </form>
 </body>
