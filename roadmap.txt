@@ -1,0 +1,22 @@
+2.5m
+html css javascript, reactjs (basic) - frontend
+html : hyper text markup language
+css  : cascading style sheet
+    1 ) Bootstrap
+    2 ) Tailwindcss
+js   : javascript -> web behavior
+Reactjs: frontend ui library -> pkgs -> shadcn
+backend
+6m
+php, laravel (MVC) (mysql) 1.5- 2m 
+mern with nextjs (mongoDB)
+Mongodb -> database (NO-SQL)
+Express -> url create/ apis
+React -> nextjs (fullstack framework)
+Node js -> logic here
+
+1y
+Python with Django (mvc)
+React / anguler
+
+c# with asp.net mvc
