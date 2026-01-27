@@ -1,0 +1,21 @@
+:where(.btn1, .btn2, .btn3)
+{
+    button {
+        border:none;
+        padding: 4px 8px;
+        border-radius: 5px;
+        margin-bottom: 4px;
+
+        color: white;
+        background-color: #2363bd;
+    }
+}
+.btn1 button:hover{
+    background-color: #13335f
+}
+.btn2 button:focus{
+    background-color: #13335f
+}
+.btn3 button:active{
+    background-color: #13335f;
+}
