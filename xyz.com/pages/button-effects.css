@@ -8,6 +8,8 @@
 
         color: white;
         background-color: #2363bd;
+
+        cursor: loading;
     }
 }
 .btn1 button:hover{

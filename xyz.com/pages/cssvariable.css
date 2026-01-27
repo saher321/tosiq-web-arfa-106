@@ -1,0 +1,24 @@
+
+h1 {
+    background-color: var(--bg-clr);
+    color: var(--txt-clr);
+    box-shadow: 0px 0px 3px #aaaaaa;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+h2 {
+    background-color: var(--bg-clr);
+    color: var(--txt-clr);
+    box-shadow: 0px 0px 3px #aaaaaa;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+h3 {
+    background-color: var(--bg-clr);
+    color: var(--txt-clr);
+    box-shadow: 0px 0px 3px #aaaaaa;
+    padding: 4px;
+    border-radius: 8px;
+}

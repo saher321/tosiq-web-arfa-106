@@ -1,0 +1,11 @@
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.parent div {
+    background-color: yellowgreen;
+}

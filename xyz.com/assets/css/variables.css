@@ -1,0 +1,8 @@
+:root {
+    --bg-clr: #f1f1f1;
+    --txt-clr: tomato;
+
+    /* APP CSS VARIABLES */
+    --base-bg-clr: purple;
+    --secondary-bg-clr: blue;
+}
