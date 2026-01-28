@@ -1,0 +1,46 @@
+.parent{
+    background-image: url("./assets/images/image1.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 8px;
+    height: 400px;
+
+    position: relative;
+}
+.red-box {
+    position: absolute;
+    /* z-index: 1; */
+    top: 0;
+    right: 0;
+    background-color: red;
+    margin: 8px;
+    width: 200px; height: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px #ccc;
+}
+
+.green-box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    background-color: yellowgreen;
+    margin: 8px;
+    width: 200px; height: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px #ccc;
+}
+
+/* line for assignment work */
+
+.line-wrapper {
+    background-color: #CFF4E6;
+    height: 20px; width: 100%;
+    border-radius: 50px;
+}
+.line-wrapper .liner {
+    background-color: #5BBA89;
+    height: 20px; width: 30%;
+    border-radius: 50px;    
+}
+
