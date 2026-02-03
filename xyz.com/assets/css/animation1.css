@@ -1,0 +1,148 @@
+body{
+    background-color: #333;
+}
+.box{
+    height: 56px; width: 56px;
+    /* background-color: #4BC658; */
+    background-color: white;
+    padding: 4px;
+    /* border-radius: 16px; */
+    border-radius: 50px;
+    box-shadow: 0px 0px 3px #ccc;
+    
+    border-top: 3px solid red;
+    border-right: 3px solid green;
+    border-left: 3px solid yellow; 
+    border-bottom: 3px solid blue;
+
+    /* position: fixed;
+    bottom: 8px;
+    right: 8px; */
+    /* bottom: 8px;
+    right: 8px; */
+
+    animation: movement 3s infinite linear;
+    /* animation-name: movement;
+    animation-duration: 3s;
+    /* animation-delay: 5s; */
+    /* animation-iteration-count: infinite; */
+}
+
+@keyframes movement{
+    /* loading */
+    0%{
+        rotate: 0deg;
+    }
+    100%{
+        rotate: 360deg;
+    }
+    /*stairs */
+    /* 0%{
+        margin: 0px 0px 0px 0px;
+    }
+    33.3%{
+        margin: 0px 0px 0px 100px;
+    }
+    66.6%{
+        margin: 100px 0px 0px 100px;
+    }
+    100%{
+        margin: 100px 0px 0px 200px;
+    } */
+
+    /* fixed button */
+    /* 0% {
+        margin-left: 0px;
+    }
+    50% {
+        margin-bottom: 30px;
+        scale: 1.2;
+        rotate: 180deg;
+    }
+    100% {
+        margin-left: 0px
+    } */
+}
+
+.loading {
+    margin-top: 10px;
+    display: flex;
+    gap:8px;
+}
+.loading div{
+    height: 28px; width: 28px;
+    background-color: #4BC658;  
+    border-radius: 50px; 
+}
+.loading div:nth-child(even){
+    animation: even-loading 3s infinite;
+}
+
+@keyframes even-loading{
+    0% {
+        margin-top: 0px;
+    }
+    50% {
+        margin-top: 30px;
+    }
+    100% {
+        margin-top: 0px
+    }   
+}
+
+.loading div:nth-child(odd){
+    animation: odd-loading 3s infinite;
+}
+@keyframes odd-loading{
+    0% {
+        margin-top: 0px;
+    }
+    50% {
+        margin-top: -30px;
+    }
+    100% {
+        margin-top: 0px;
+    }   
+}
+
+
+
+
+.loader {
+  width: 4px;
+  color: #000;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 
+    19px -19px 0 0px, 38px -19px 0 0px, 57px -19px 0 0px,
+    19px 0     0 5px, 38px 0     0 5px, 57px 0     0 5px,
+    19px 19px  0 0px, 38px 19px  0 0px, 57px 19px  0 0px;
+  transform: translateX(-38px);
+  animation: l26 2s infinite linear;
+}
+@keyframes l26 {
+  12.5% {box-shadow: 
+    19px -19px 0 0px, 38px -19px 0 0px, 57px -19px 0 5px,
+    19px 0     0 5px, 38px 0     0 0px, 57px 0     0 5px,
+    19px 19px  0 0px, 38px 19px  0 0px, 57px 19px  0 0px}
+  25%   {box-shadow: 
+    19px -19px 0 5px, 38px -19px 0 0px, 57px -19px 0 5px,
+    19px 0     0 0px, 38px 0     0 0px, 57px 0     0 0px,
+    19px 19px  0 0px, 38px 19px  0 5px, 57px 19px  0 0px}
+  50%   {box-shadow: 
+    19px -19px 0 5px, 38px -19px 0 5px, 57px -19px 0 0px,
+    19px 0     0 0px, 38px 0     0 0px, 57px 0     0 0px,
+    19px 19px  0 0px, 38px 19px  0 0px, 57px 19px  0 5px}
+  62.5% {box-shadow: 
+    19px -19px 0 0px, 38px -19px 0 0px, 57px -19px 0 0px,
+    19px 0     0 5px, 38px 0     0 0px, 57px 0     0 0px,
+    19px 19px  0 0px, 38px 19px  0 5px, 57px 19px  0 5px}
+  75%   {box-shadow: 
+    19px -19px 0 0px, 38px -19px 0 5px, 57px -19px 0 0px,
+    19px 0     0 0px, 38px 0     0 0px, 57px 0     0 5px,
+    19px 19px  0 0px, 38px 19px  0 0px, 57px 19px  0 5px}
+  87.5% {box-shadow: 
+    19px -19px 0 0px, 38px -19px 0 5px, 57px -19px 0 0px,
+    19px 0     0 0px, 38px 0     0 5px, 57px 0     0 0px,
+    19px 19px  0 5px, 38px 19px  0 0px, 57px 19px  0 0px}
+}
