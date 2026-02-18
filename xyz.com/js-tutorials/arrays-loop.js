@@ -43,3 +43,20 @@ function filterByRole(){
 
     showUsers(filteredData);
 }
+
+function searchByText(){
+    let searchTxt = document.getElementById("searchTxt").value;
+    console.log(searchTxt);
+    if (!searchTxt) {
+        
+        showUsers(users);
+        return;
+    };
+
+    const filteredData = users.filter((user) => {
+        return user.name.toLowerCase().match(searchTxt);
+    });
+
+    showUsers(filteredData);
+
+}
