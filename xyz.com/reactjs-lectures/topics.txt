@@ -1,0 +1,7 @@
+****** ReactJs ******
+
+1. components
+2. props & children
+3. features (hooks)
+4. state management
+5. conditional rendering
