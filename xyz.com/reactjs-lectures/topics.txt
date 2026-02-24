@@ -5,3 +5,15 @@
 3. features (hooks)
 4. state management
 5. conditional rendering
+
+********** CMD to install ReactJs project **********
+1. npm create vite@latest
+
+2. to start project:
+    => npm run dev
+
+    const App = () => {
+        return (
+            <div> App </div>
+        )
+    }
