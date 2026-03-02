@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import TabContent from './components/TabContent';
 
 const App = () => {
   const [counter, setCounter] = useState(1);
@@ -24,7 +25,10 @@ const App = () => {
     <button onClick={handleIncreament}>
       +
     </button>
-    
+    <hr/>
+
+    <TabContent/>
+
     </>
   )
 }
