@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Button from './Button'
+import { LuUser, LuPalette } from "react-icons/lu";
 
 const TabContent = () => {
     const [tab, setTab] = useState('profile');
@@ -13,10 +14,14 @@ const TabContent = () => {
     <div className='m-5'>
         {/* tab buttons */}
         <div className='flex gap-3'>
-            <Button func={(e) => handleOpenTab(e, 'profile')} title='Profile tab'/>
-            <Button func={(e) => handleOpenTab(e, 'preferences')} title='Preferences tab'/>
-            <Button func={(e) => handleOpenTab(e, 'settings')} title='Settings tab'/>
-            <Button func={(e) => handleOpenTab(e, 'about')} title='About tab'/>
+            <Button func={(e) => handleOpenTab(e, 'profile')} title={
+                <> <LuUser className='inline -mt-1' /> Profile </>
+            }/>
+            <Button func={(e) => handleOpenTab(e, 'preferences')} title={
+                <> <LuPalette className='inline -mt-1'  /> Preferences </>
+            }/>
+            <Button func={(e) => handleOpenTab(e, 'settings')} title='Settings'/>
+            <Button func={(e) => handleOpenTab(e, 'about')} title='About'/>
         </div>
 
         {/* tab content */}
@@ -36,8 +41,6 @@ const TabContent = () => {
             tab == 'about' &&
             <div>about tab</div>
         }
-
-
     </div>
   )
 }
