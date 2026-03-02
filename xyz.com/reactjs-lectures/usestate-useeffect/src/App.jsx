@@ -16,18 +16,14 @@ const App = () => {
     <>
     <div>App Counter</div>
     
-    <button onClick={handleDecreament}>
-      -
-    </button>
-
-    <span>{counter}</span>
-    
-    <button onClick={handleIncreament}>
-      +
-    </button>
+    <button onClick={handleDecreament}> - </button> 
+    <span>{counter}</span> 
+    <button onClick={handleIncreament}> + </button>
     <hr/>
 
     <TabContent/>
+
+    <hr />
 
     </>
   )
