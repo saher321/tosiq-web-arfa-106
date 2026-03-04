@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import TabContent from './components/TabContent';
+import axios from 'axios';
 
 const App = () => {
+  const [recipes, setRecipes] = useState([])
   const [counter, setCounter] = useState(1);
-
-  const [value, setValue] = useState("Tosiq")
+  const [value, setValue] = useState("Tosiq");
 
   const handleIncreament = () => {
     
@@ -33,6 +34,17 @@ const App = () => {
     console.log("Runs on condition")
   }, [value])
 
+  useEffect(() => {
+    const allRecipes = async () => {
+      try {
+        const response = await axios.get("https://dummyjson.com/recipes")
+        setRecipes(response.data.recipes)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    allRecipes();
+  }, [])
 
   return (
     <>
@@ -47,6 +59,15 @@ const App = () => {
 
     <hr />
 
+    <ul>
+    {
+      recipes.map((recipe) => {
+        return (
+          <li>{recipe.name}</li>
+        )
+      })
+    }
+    </ul>
     </>
   )
 }
