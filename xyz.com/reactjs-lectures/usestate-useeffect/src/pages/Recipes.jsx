@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import RecipeItem from '../components/RecipeItem'
 import WebLayout from '../layouts/WebLayout'
 import { CircularProgress } from 'react-loader-spinner'
+import { Link } from 'react-router'
 
 const Recipes = () => {
 
@@ -46,7 +47,9 @@ const Recipes = () => {
             recipes.map((recipe) => {
               return (
               <div className='col-span-4' key={recipe.id}>
+                <Link to={`/recipes/${recipe.id}`}>
                   <RecipeItem recipe={recipe} />
+                </Link>
               </div>
               )
               })
