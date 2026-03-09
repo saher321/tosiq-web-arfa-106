@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import WebLayout from "../layouts/WebLayout";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import axios from "axios";
 import { CircularProgress } from "react-loader-spinner";
 
+import {
+  ArrowLeft,
+  Heart,
+  Clock,
+  Users,
+  Flame,
+  Star
+} from "lucide-react";
 const RecipeDetails = () => {
   const [recipe, setRecipe] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -28,118 +36,129 @@ const RecipeDetails = () => {
 
   return (
     <WebLayout>
-      Recipe Details #{params.id}
-
-      {
-        isLoading ? 
-        <div className='grid place-items-center'>
-            <CircularProgress
-              height="50"
-              width="50"
-              color="#5478FF"
-              ariaLabel="circular-progress-loading"
-              wrapperStyle={{}}
-              wrapperClass="wrapper-class"
-              visible={true}
-              strokeWidth={2}
-              animationDuration={1}
-              />
-          </div> :
-        <div className=" bg-white rounded-2xl shadow-sm overflow-hidden">
-          {/* Image */}
-          <img
-            src={recipe.image}
-            alt={recipe.name}
-            className="w-full h-72 object-cover"
+      {/* Recipe Details #{params.id} */}
+      {isLoading ? (
+        <div className="grid place-items-center">
+          <CircularProgress
+            height="50"
+            width="50"
+            color="#5478FF"
+            ariaLabel="circular-progress-loading"
+            wrapperStyle={{}}
+            wrapperClass="wrapper-class"
+            visible={true}
+            strokeWidth={2}
+            animationDuration={1}
           />
+        </div>
+      ) : (
+        <div>
+          {/* Image Section */}
+          <div className="relative">
+            <img
+              src={recipe.image}
+              alt={recipe.name}
+              className="w-full h-72 object-cover rounded-3xl"
+            />
 
-          <div className="p-8">
-            {/* Header */}
-            <div className="flex items-start justify-between mb-6">
+            {/* Top Icons */}
+            <Link to={'/recipes'} className="absolute top-4 left-4 bg-white/90 p-2 rounded-full shadow">
+              <ArrowLeft size={18} />
+            </Link>
+
+            <button className="absolute top-4 right-4 bg-white/90 p-2 rounded-full shadow">
+              <Heart size={18} />
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="mt-6">
+            {/* Title + Rating */}
+            <div className="flex justify-between items-start">
               <div>
-                <h1 className="text-3xl font-semibold text-gray-900">
+                <h1 className="text-2xl font-semibold text-gray-900">
                   {recipe.name}
                 </h1>
-
-                <p className="text-gray-500 mt-1 text-sm">
-                  {recipe.cuisine} Cuisine • {recipe.difficulty}
-                </p>
+                <p className="text-gray-500 text-sm">{recipe.cuisine}</p>
               </div>
 
-              <div className="text-right">
-                <p className="text-yellow-500 font-semibold text-lg">
-                  ★ {recipe.rating}
-                </p>
-                <p className="text-gray-400 text-sm">
-                  {recipe.reviewCount} reviews
-                </p>
+              <div className="flex items-center gap-1 text-yellow-500">
+                <Star size={16} fill="currentColor" />
+                <span className="text-sm font-medium">{recipe.rating}</span>
               </div>
             </div>
 
-            {/* Info */}
-            <div className="grid grid-cols-3 gap-6 text-center border-y py-6 mb-8">
-              <div>
-                <p className="text-sm text-gray-400">Prep Time</p>
-                <p className="font-medium text-gray-800">
-                  {recipe.prepTimeMinutes} min
-                </p>
+            {/* Info Cards */}
+            <div className="grid grid-cols-3 gap-4 mt-6">
+              <div className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm">
+                <Clock size={18} className="text-gray-500" />
+                <div>
+                  <p className="text-xs text-gray-400">Time</p>
+                  <p className="text-sm font-medium">
+                    {recipe.cookTimeMinutes} min
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <p className="text-sm text-gray-400">Cook Time</p>
-                <p className="font-medium text-gray-800">
-                  {recipe.cookTimeMinutes} min
-                </p>
+              <div className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm">
+                <Users size={18} className="text-gray-500" />
+                <div>
+                  <p className="text-xs text-gray-400">Servings</p>
+                  <p className="text-sm font-medium">{recipe.servings}</p>
+                </div>
               </div>
 
-              <div>
-                <p className="text-sm text-gray-400">Servings</p>
-                <p className="font-medium text-gray-800">{recipe.servings}</p>
+              <div className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm">
+                <Flame size={18} className="text-gray-500" />
+                <div>
+                  <p className="text-xs text-gray-400">Calories</p>
+                  <p className="text-sm font-medium">
+                    {recipe.caloriesPerServing}
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-10">
-              {/* Ingredients */}
-              <div>
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">
-                  Ingredients
-                </h2>
+            <div className="flex  gap-3">
+                {/* Ingredients */}
+                <div className="flex-1 bg-white rounded-2xl p-6 shadow-sm mt-8">
+                <h2 className="font-semibold text-lg mb-4">Ingredients</h2>
 
-                <ul className="space-y-2 text-gray-600 text-sm">
-                  {recipe?.ingredients?.map((item, index) => (
-                    <li key={index}>• {item}</li>
-                  ))}
+                <ul className="space-y-3">
+                    {recipe?.ingredients?.map((item, index) => (
+                    <li
+                        key={index}
+                        className="flex items-center gap-3 text-gray-600"
+                    >
+                        <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
+                        {item}
+                    </li>
+                    ))}
                 </ul>
-              </div>
+                </div>
 
-              {/* Instructions */}
-              <div>
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">
-                  Instructions
-                </h2>
+                {/* Instructions */}
+                <div className="flex-2 bg-white rounded-2xl p-6 shadow-sm mt-6">
+                <h2 className="font-semibold text-lg mb-4">Instructions</h2>
 
-                <ol className="space-y-3 text-gray-600 text-sm list-decimal list-inside">
-                  {recipe?.instructions?.map((step, index) => (
-                    <li key={index}>{step}</li>
-                  ))}
-                </ol>
-              </div>
-            </div>
+                <div className="space-y-5">
+                    {recipe?.instructions?.map((step, index) => (
+                    <div key={index} className="flex gap-4">
+                        <div className="w-7 h-7 flex items-center justify-center bg-orange-500 text-white rounded-full text-sm font-medium">
+                        {index + 1}
+                        </div>
 
-            {/* Tags */}
-            <div className="mt-8 flex flex-wrap gap-2">
-              {recipe?.tags?.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 text-xs bg-gray-100 rounded-full text-gray-600"
-                >
-                  {tag}
-                </span>
-              ))}
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                        {step}
+                        </p>
+                    </div>
+                    ))}
+                </div>
+                </div>
             </div>
           </div>
         </div>
-      }
+      )}
     </WebLayout>
   );
 };
