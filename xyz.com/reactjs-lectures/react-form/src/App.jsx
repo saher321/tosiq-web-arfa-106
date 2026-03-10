@@ -7,7 +7,7 @@ const App = () => {
   const { register, handleSubmit } = useForm();
 
   const handleUserSubmit = (data) => {
-    axios.post("our-url-will-here", data)
+    console.log(data)
   }
 
   return (
