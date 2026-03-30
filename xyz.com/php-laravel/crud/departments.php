@@ -50,8 +50,8 @@
         <td><?php echo $i?></td>
         <td><?php echo $item['name']?></td>
         <td>
-          <!-- <a href="#">Edit</a> | <a href="./department/delete.php?id=<?php echo  $item['id']?>">Delete</a> -->
-          <a href="#">Edit</a> | <a href="#" onclick="return del(<?php echo  $item['id']?>)">Delete</a>
+          <!-- <a href="#">Edit</a> | <a href="./department/delete.php?id=<php echo  $item['id']?>">Delete</a> -->
+          <a href="./edit-department.php?dept_id=<?php echo  $item['id']?>">Edit</a> | <a href="#" onclick="return del(<?php echo  $item['id']?>)">Delete</a>
         </td>
       </tr>
     <?php }?>
