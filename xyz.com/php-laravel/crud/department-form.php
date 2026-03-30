@@ -13,7 +13,7 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="./department/insert.php" method="post">
+  <form action="./department/insert.php" method="post" enctype="multipart/form-data">
     <table border="1" cellpadding="20" cellspacing="0">
       <tr>
         <td colspan="2">
@@ -22,6 +22,13 @@
             <a href="./departments.php">View departments</a>
           </div>
 
+        </td>
+      </tr>
+      
+      <tr>
+        <td>Image:</td>
+        <td>
+          <input type="file" accept=".png, .jpg, .jpeg" name="file">
         </td>
       </tr>
       <tr>

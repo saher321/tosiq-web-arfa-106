@@ -1,9 +1,20 @@
 <?php
   include "../config/db.php";
 
+  $image = $_FILES['file']['name'];
   $deptName = $_POST['name'];
+  // print_r($image);
+  // die();
+  
+  $query = "insert into departments (name, image) values('$deptName', '$image')";
 
-  $query = "insert into departments (name) values('$deptName')";
+  if ($image){
+
+    $dest = '../uploads/files/' . $image;
+    move_uploaded_file($_FILES['file']['tmp_name'], $dest);
+    
+  }
+
   mysqli_query($conn, $query);
 
   // redirection

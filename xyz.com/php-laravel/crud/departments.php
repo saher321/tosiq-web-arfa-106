@@ -26,7 +26,7 @@
 <table border="1" cellspacing="0" cellpadding="20">
   <thead>
      <tr>
-        <td colspan="3">
+        <td colspan="4">
           <div>
             <span>Departments (<?php echo $count?>)</span> | 
             <a href="./department-form.php">Add department</a>
@@ -36,6 +36,7 @@
       </tr>
     <tr>
       <th>Id</th>
+      <th>Image</th>
       <th>Name</th>
       <th>More</th>
     </tr>
@@ -48,6 +49,9 @@
     ?>
       <tr>
         <td><?php echo $i?></td>
+        <td>
+          <img height="56px" width="56px" src="./uploads/files/<?php echo $item['image']?>" alt="">
+        </td>
         <td><?php echo $item['name']?></td>
         <td>
           <!-- <a href="#">Edit</a> | <a href="./department/delete.php?id=<php echo  $item['id']?>">Delete</a> -->

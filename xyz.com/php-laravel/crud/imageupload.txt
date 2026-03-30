@@ -1,0 +1,10 @@
+Image upload
+
+tbl -> image
+    - image_4234242.png
+
+orignal file -> uploads/image_4234242.png
+
+show image
+
+<img src="./uploads/file/<?php echo $item['image']?>" />
