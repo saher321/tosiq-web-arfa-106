@@ -3,7 +3,7 @@
 
     $departments = $dept->getDepts();
 
-    die($departments)
+    // die($departments)
 ?>
 
 <!DOCTYPE html>
