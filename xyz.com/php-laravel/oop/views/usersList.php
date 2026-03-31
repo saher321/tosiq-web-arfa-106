@@ -3,7 +3,7 @@
 
     $userList = $user->users();
 
-    // print_r($userList)
+    print_r($userList)
 ?>
 
 <!DOCTYPE html>
