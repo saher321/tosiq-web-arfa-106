@@ -9,7 +9,7 @@ include '../classes/department.php';
         $dept->delete($id);
         header("Location: ./departmentList.php");
     } else {
-        echo "<script>alert('Department id isn't valid')";
+        echo "<script>alert('Department id isn't valid')</script>";
     }
 
 ?>
