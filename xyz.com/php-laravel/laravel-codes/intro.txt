@@ -1,0 +1,88 @@
+LARAVEL -- Php framework
+MERN -> JS
+MVC
+
+M = Model       => Eloquent = ORM
+V = View        => UIs :: ReactJs
+C = Controller  => Business Logic
+
+Route
+http://localhost:800/api/v1/departments
+
+Controller -> func()
+
+depts = func() => Department   :: Eloquent
+
+depts -> view
+
+id  name    Email
+-     --     ---
+
+Restfull APIS
+
+GET         => http://localhost:800/api/v1/departments
+DELETE      => http://localhost:800/api/v1/departments/1
+POST        => http://localhost:800/api/v1/departments/create
+PUT/PATCH   => http://localhost:800/api/v1/departments/1
+
+Details GET => http://localhost:800/api/v1/departments/1
+
+---------  SETUP LARAVEL ------
+
+installed softwares
+1. Xampp
+    - https://www.apachefriends.org/download.html
+2. composer
+    - https://getcomposer.org/download/
+3. nodejs
+    - https://nodejs.org/en/download
+
+-------- RUN LARAVEL --------
+
+api.php
+    - php artisan migrate
+    - php artisan install:api
+
+run laravel as backend
+    - composer run dev
+
+******************************
+__________ MERN ___________
+
+M = Mongodb -> No-SQL
+    - collections > documents > { "name": "ALi"}
+
+E = Express -> Urls / apis
+R = React -> ui components
+N = Node -> Business logic
+
+        STRUCTURE
+    - File structure
+        config > db.js
+        utils  > functions -> slug, otp, sendEmail
+        controllers
+            - department.controller.js
+        models
+            - department.model.js
+        routes
+            - department.route.js
+
+    - Module structure -> Moduler appr.
+        config > db.js
+        utils  > functions -> slug, otp, sendEmail
+        modules
+            department
+                - department.controller.js
+                - department.model.js
+                - department.route.js
+                - departmentFunc.js
+                    -> sendingEmail()
+
+            student
+                - student.controller.js
+                - student.model.js
+                - student.route.js
+                - studentFunc.js
+                    -> sendingEmail()
+
+
