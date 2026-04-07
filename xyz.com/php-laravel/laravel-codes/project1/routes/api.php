@@ -7,3 +7,5 @@ use App\http\Controllers\DepartmentController;
 
 Route::get('/users', [UserController::class, "users"]);
 Route::get('/departments', [DepartmentController::class, "index"]);
+
+Route::get('/departments/{id}', [DepartmentController::class, "get_details"]);

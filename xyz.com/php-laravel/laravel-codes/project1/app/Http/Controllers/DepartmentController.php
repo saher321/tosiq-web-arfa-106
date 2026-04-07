@@ -15,7 +15,12 @@ class DepartmentController extends Controller
         //     [ "id" => 5042, "name" => "English" ],
         // ];
 
-        $depts = Department::all();
+        $depts = Department::get(['id', 'name']);
+        return response()->json($depts);
+    }
+
+    function get_details($id) {
+        $depts = Department::find( $id, ['id', 'name']);
         return response()->json($depts);
     }
 }

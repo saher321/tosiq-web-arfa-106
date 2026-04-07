@@ -56,7 +56,9 @@ run laravel as backend
     - composer run dev
 
 to make controller file for functions
-run this command: php artisan make:controller UserController
+run this command: 
+php artisan make:controller UserController
+php artisan make:model Department
 
 ******************************
 __________ MERN ___________
