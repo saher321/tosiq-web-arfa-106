@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\http\Controllers\UserController;
+use App\http\Controllers\DepartmentController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/users', [UserController::class, "users"]);
+Route::get('/departments', [DepartmentController::class, "index"]);

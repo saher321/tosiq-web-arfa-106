@@ -1,3 +1,12 @@
+After clone laravel project
+run cmds:
+    - npm i
+    - composer install
+    - cp .env.example .env
+    - then php artisan key:generate
+
+    - php artisan migrate
+
 LARAVEL -- Php framework
 MERN -> JS
 MVC
@@ -45,6 +54,9 @@ api.php
 
 run laravel as backend
     - composer run dev
+
+to make controller file for functions
+run this command: php artisan make:controller UserController
 
 ******************************
 __________ MERN ___________
