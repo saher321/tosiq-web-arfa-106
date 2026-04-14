@@ -1,0 +1,10 @@
+// npm init -y
+// pkgs: express, dotenv, nodemon, cors, mongoose, nanoid, nodemailer, bcryptjs, jsonwebtoken, cloudinary, multer, multer-storage-cloudinary
+var a = 20;
+var b = 30;
+var c = 40;
+var d = 50;
+var e = 60;
+var avg = (a + b + c + d + e) / 5;
+console.log("Hello from backend!");
+console.log("Average:", avg);
