@@ -10,17 +10,22 @@ app.get('/', (req, res) => {
     })
 })
 
-app.get('/house-colors', (eq, res) => {
-    return res.send({
-        status: true,
-        houseColors: [
+const colors = [
             { code: "P-101", name: "Purple" },
             { code: "B-043", name: "Black" },
             { code: "G-239", name: "Gray" }
         ]
+app.get('/house-colors', (eq, res) => {
+    return res.send({
+        status: true,
+        houseColors: colors
     })
 })
 
 app.listen( PORT, ()=>{
     console.log(`Server is started: http://localhost:${PORT}`)
 })
+
+// assignment 14 april 2026
+// create url of products
+// id, name, price, image(url)
