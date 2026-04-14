@@ -10,6 +10,17 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get('/house-colors', (eq, res) => {
+    return res.send({
+        status: true,
+        houseColors: [
+            { code: "P-101", name: "Purple" },
+            { code: "B-043", name: "Black" },
+            { code: "G-239", name: "Gray" }
+        ]
+    })
+})
+
 app.listen( PORT, ()=>{
     console.log(`Server is started: http://localhost:${PORT}`)
 })
