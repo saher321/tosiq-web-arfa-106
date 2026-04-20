@@ -8,3 +8,25 @@ var e = 60;
 var avg = (a + b + c + d + e) / 5;
 console.log("Hello from backend!");
 console.log("Average:", avg);
+
+------------------------------
+app.com
+    client > Reactjs
+    server > backend (Nodejs)
+
+    FILE STRUCTURE
+        controllers
+        models
+        routes
+        utils
+        middlewares
+        config
+    MODULER APPROC.
+        config
+        modules
+            post
+                controller
+                model
+                route
+        middlwares
+        utils
