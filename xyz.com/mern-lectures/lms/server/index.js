@@ -1,10 +1,13 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import departmentRouter from './modules/department/department.route.js';
+import cors from 'cors'
+
 dotenv.config()
 
 const PORT = process.env.PORT || 5000
 const app = express();
+app.use(cors())
 
 // http://localhost:5000/departments
 app.use('', departmentRouter)
