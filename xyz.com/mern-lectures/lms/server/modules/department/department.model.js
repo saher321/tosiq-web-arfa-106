@@ -8,6 +8,10 @@ const departmentSchema = new mongoose.Schema({
     hodName: {
         type: String,
         required: true
+    },
+    status: {
+        type: Boolean,
+        default: true
     }
 }, {timestamps: true})
 
