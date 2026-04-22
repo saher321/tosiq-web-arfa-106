@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import departmentRouter from './modules/department/department.route.js';
 import cors from 'cors'
+import { connectDB } from './config/db.js';
 
 dotenv.config()
 
@@ -20,6 +21,8 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen( PORT, () => {
-    console.log(`Server is started http://localhost:${PORT}`)
+connectDB().then(() => {
+    app.listen( PORT, () => {
+        console.log(`Server is started http://localhost:${PORT}`)
+    })
 })

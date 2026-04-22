@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
-import { ALL_DEPT_API } from './utils/api.js'
+import { ALL_DEPT_API, DEL_DEPT_API } from './utils/api.js'
 import { useEffect } from 'react'
 
 const App = () => {
@@ -13,6 +13,7 @@ const App = () => {
       const response = await axios.get(ALL_DEPT_API)
       console.log(response.data)
       if (response.data.status == true) {
+        console.log(response.data.departments)
         setDepartments(response.data.departments)
       } else {
         console.error("Error in fetching request!")
@@ -25,6 +26,20 @@ const App = () => {
   useEffect(() => {
     getDepartments();
   }, [])
+
+  const handleDelete = async (id) => {
+    console.log(id)
+    try {
+      const response = await axios.delete(DEL_DEPT_API + `/${id}`)
+      if (response.data.status == true){
+        await getDepartments();
+      }
+    } catch (error) {
+      console.log("Err: ", error)
+    }
+
+  }
+
 
   return (
     <>
@@ -48,10 +63,14 @@ const App = () => {
               departments.map((department, i) => {
                 return (
                   <tr key={i}>
-                    <td>{department.id}</td>
+                    <td>{department._id}</td>
                     <td>{department.name}</td>
                     <td>{department.hodName}</td>
-                    <td>Edit / Remove</td>
+                    <td>Edit /
+                      <button onClick={()=>handleDelete(department._id)}>
+                        Remove
+                      </button>
+                    </td>
                   </tr>
                 )
               })
