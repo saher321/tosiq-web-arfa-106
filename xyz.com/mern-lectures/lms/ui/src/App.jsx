@@ -1,85 +1,17 @@
 import React from 'react'
-import { useState } from 'react'
-import axios from 'axios'
-import { ALL_DEPT_API, DEL_DEPT_API } from './utils/api.js'
-import { useEffect } from 'react'
+import { Route, Routes } from 'react-router'
+import Dashboard from './pages/Dashboard'
+import DeptList from './pages/department/DeptList'
+import StdList from './components/student/StdList'
 
 const App = () => {
-
-  const [departments, setDepartments] = useState([])
-
-  const getDepartments = async () => {
-    try {
-      const response = await axios.get(ALL_DEPT_API)
-      console.log(response.data)
-      if (response.data.status == true) {
-        console.log(response.data.departments)
-        setDepartments(response.data.departments)
-      } else {
-        console.error("Error in fetching request!")
-      }
-    } catch (error) {
-      console.error("ERR: ", error)
-    }
-  }
-
-  useEffect(() => {
-    getDepartments();
-  }, [])
-
-  const handleDelete = async (id) => {
-    console.log(id)
-    try {
-      const response = await axios.delete(DEL_DEPT_API + `/${id}`)
-      if (response.data.status == true){
-        await getDepartments();
-      }
-    } catch (error) {
-      console.log("Err: ", error)
-    }
-
-  }
-
-
+  const PREFIX = "/admin"
   return (
-    <>
-      <h2>Departments</h2>
-      <div>
-        <table width={"100%"} border={1} cellPadding={20} cellSpacing={0}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>HOD Name</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              departments.length == 0 ? 
-              <tr>
-                <td colSpan={4}>No records were found!</td>
-              </tr> :
-              departments.map((department, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{department._id}</td>
-                    <td>{department.name}</td>
-                    <td>{department.hodName}</td>
-                    <td>Edit /
-                      <button onClick={()=>handleDelete(department._id)}>
-                        Remove
-                      </button>
-                    </td>
-                  </tr>
-                )
-              })
-            }
-
-          </tbody>
-        </table>
-      </div>
-    </>
+    <Routes>
+      <Route path={`${PREFIX}/dashboard`} element={<Dashboard />}/>
+      <Route path={`${PREFIX}/departments`} element={<DeptList />}/>
+      <Route path={`${PREFIX}/students`} element={<StdList />}/>
+    </Routes>
   )
 }
 
