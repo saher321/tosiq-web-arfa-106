@@ -17,6 +17,30 @@ export const getDepartments = async (req, res) => {
     })
 }
 
+export const addDepartment = async (req, res) => {
+    const { name, hodName } = req.body
+    try {
+        const newDept = await Department.create({ name, hodName });
+        if (newDept) {
+            return res.send({
+                status: true,
+                message: "Department added successfully"
+            }) 
+        } else {
+            return res.send({
+                status: false,
+                message: "Failed to add department"
+            }) 
+        }
+    } catch (error) {
+        console.log("Err: ", error)
+        return res.send({
+            status: false,
+            message: "Network error"
+        })
+    }
+}
+
 export const delDepartment = async (req, res) => {
     const { id } = req.params;
     console.log(id)

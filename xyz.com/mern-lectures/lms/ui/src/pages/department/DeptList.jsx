@@ -4,6 +4,9 @@ import axios from "axios";
 import { ALL_DEPT_API, DEL_DEPT_API } from "../../utils/api.js";
 import { useEffect } from "react";
 import AdminLayout from "../../layouts/AdminLayout";
+import { BsPencil, BsPencilSquare, BsTrash } from "react-icons/bs";
+import PageTitle from "../../components/PageTitle.jsx";
+import { Link } from "react-router";
 
 const DeptList = () => {
   const [departments, setDepartments] = useState([]);
@@ -41,19 +44,22 @@ const DeptList = () => {
 
   return (
     <AdminLayout>
-      <h2>Departments</h2>
+      <div className="mb-4 flex items-center justify-between">
+        <PageTitle title="Departments" />
+        <Link to={"/admin/departments/create"} className="bg-gray-900 text-white px-6 py-3 rounded-lg">Add new</Link>
+      </div>
       <div>
         <div className="min-h-screen flex justify-center">
-          <div className="w-full max-w-6xl">
+          <div className="w-full">
             {/* Table Card */}
-            <div className="bg-white rounded-2xl shadow overflow-hidden">
+            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
               <table className="w-full text-sm">
-                <thead className="bg-gray-50 text-gray-500 border-b">
+                <thead className="bg-gray-50 text-gray-500 border-b border-gray-200">
                   <tr>
-                    <th className="p-4 text-left">ID</th>
-                    <th className="p-4 text-left">Name</th>
-                    <th className="p-4 text-left">HOD Name</th>
-                    <th className="p-4 text-right">Actions</th>
+                    <th className="py-3 px-4 text-left">ID</th>
+                    <th className="py-3 px-4 text-left">Name</th>
+                    <th className="py-3 px-4 text-left">HOD Name</th>
+                    <th className="py-3 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
 
@@ -71,32 +77,32 @@ const DeptList = () => {
                     departments.map((department, i) => (
                       <tr
                         key={department._id}
-                        className="border-b last:border-none hover:bg-gray-50 transition"
+                        className="border border-gray-200 last:border-none hover:bg-gray-50 transition"
                       >
                         {/* ID */}
-                        <td className="p-4 text-gray-500">{i+1}</td>
+                        <td className="py-3 px-4 text-gray-500">{i+1}</td>
 
                         {/* Name */}
-                        <td className="p-4 font-medium text-gray-800">
+                        <td className="py-3 px-4 font-medium text-gray-800">
                           {department.name}
                         </td>
 
                         {/* HOD */}
-                        <td className="p-4 text-gray-600">
+                        <td className="py-3 px-4 text-gray-600">
                           {department.hodName}
                         </td>
 
                         {/* Actions */}
-                        <td className="p-4 text-right space-x-3">
-                          <button className="text-blue-600 hover:underline">
-                            Edit
+                        <td className="py-3 px-4 text-right space-x-3">
+                          <button className="hover:outline cursor-pointer bg-gray-100 p-1 rounded hover:underline">
+                            <BsPencilSquare />
                           </button>
 
                           <button
                             onClick={() => handleDelete(department._id)}
-                            className="text-red-500 hover:underline"
+                            className="hover:outline cursor-pointer bg-gray-100 p-1 rounded hover:underline"
                           >
-                            Remove
+                            <BsTrash />
                           </button>
                         </td>
                       </tr>
