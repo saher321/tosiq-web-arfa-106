@@ -5,7 +5,7 @@ import SidebarLinkIcon from "./SidebarLinkIcon";
 
 const Sidebar = () => {
   return (
-    <aside className="bg-gray-100 shadow-md transition-all duration-300">
+    <aside className="bg-gray-100 border border-gray-200 transition-all duration-300">
       <div className="p-4 font-bold text-lg">AZ</div>
 
       <nav className="flex flex-col items-center mt-6 space-y-6">

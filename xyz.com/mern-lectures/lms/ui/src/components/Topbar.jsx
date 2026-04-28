@@ -3,7 +3,7 @@ import React from "react";
 const Topbar = () => {
   return (
     <header className="flex items-center justify-between  px-6 py-4">
-      <div>Profile</div>
+      <div>Search</div>
     </header>
   );
 };
