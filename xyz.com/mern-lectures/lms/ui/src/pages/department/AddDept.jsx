@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router";
 import { useForm } from 'react-hook-form'
 import TextField from "../../components/TextField";
 import axios from "axios";
-import { ADD_DEPT_API } from "../../utils/api";
+import { ADD_DEPT_API } from "../../utils/api.js";
 import toast from "react-hot-toast";
 
 const AddDept = () => {

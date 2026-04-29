@@ -17,6 +17,27 @@ export const getDepartments = async (req, res) => {
     })
 }
 
+export const singleDepartment = async (req, res) => {
+    const { id } = req.params
+    
+    try {
+        const dept = await Department.findById({ _id: id })
+        if (!dept)
+            return res.send({
+                status: false,
+                message: "Department not found"
+            })
+            
+        return res.send({
+            status: true,
+            department: dept
+        })
+        
+    } catch (error) {
+        console.log("ERR: ", error)
+    }
+} 
+
 export const addDepartment = async (req, res) => {
     const { name, hodName } = req.body
     try {

@@ -6,10 +6,11 @@ import { useEffect } from "react";
 import AdminLayout from "../../layouts/AdminLayout";
 import { BsPencil, BsPencilSquare, BsTrash } from "react-icons/bs";
 import PageTitle from "../../components/PageTitle.jsx";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const DeptList = () => {
   const [departments, setDepartments] = useState([]);
+  const navigate = useNavigate()
 
   const getDepartments = async () => {
     try {
@@ -41,6 +42,10 @@ const DeptList = () => {
       console.log("Err: ", error);
     }
   };
+
+  const handleEdit = async (id) => {
+    navigate(`/admin/departments/edit/${id}`)
+  }
 
   return (
     <AdminLayout>
@@ -94,7 +99,7 @@ const DeptList = () => {
 
                         {/* Actions */}
                         <td className="py-3 px-4 text-right space-x-3">
-                          <button className="hover:outline cursor-pointer bg-gray-100 p-1 rounded hover:underline">
+                          <button onClick={() => handleEdit(department._id)} className="hover:outline cursor-pointer bg-gray-100 p-1 rounded hover:underline">
                             <BsPencilSquare />
                           </button>
 
