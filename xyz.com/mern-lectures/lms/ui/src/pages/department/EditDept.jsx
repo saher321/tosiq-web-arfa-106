@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import TextField from "../../components/TextField";
 import axios from "axios";
-import { EDIT_DEPT_API } from "../../utils/api.js";
+import { EDIT_DEPT_API, UPDATE_DEPT_API } from "../../utils/api.js";
 import toast from "react-hot-toast";
 
 const EditDept = () => {
@@ -30,8 +30,18 @@ const EditDept = () => {
     getDepartment()
   }, [params.id])
 
-  const handleEditDepartment = async () => {
-    
+  const handleEditDepartment = async (data) => {
+    try {
+      const response = await axios.patch(UPDATE_DEPT_API, data)
+      if (response.data.status == true) {
+        toast.success(response.data.message)
+        navigate('/admin/departments')
+      } else {
+        toast.error(response.data.message)
+      }
+    } catch (error) {
+      console.log("Err:", error)
+    }
   }
 
   return (

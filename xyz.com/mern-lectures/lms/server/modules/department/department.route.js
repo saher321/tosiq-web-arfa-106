@@ -1,10 +1,11 @@
 import express from 'express'
-import { getDepartments, delDepartment, addDepartment, singleDepartment } from './department.controller.js'
+import { getDepartments, delDepartment, addDepartment, singleDepartment, updateDepartment } from './department.controller.js'
 
 const departmentRouter = express.Router()
 
 departmentRouter.get("/departments", getDepartments)
 departmentRouter.get("/departments/edit/:id", singleDepartment)
+departmentRouter.patch("/departments/update", updateDepartment)
 departmentRouter.post("/departments/add", addDepartment)
 departmentRouter.delete("/departments/delete/:id", delDepartment)
 

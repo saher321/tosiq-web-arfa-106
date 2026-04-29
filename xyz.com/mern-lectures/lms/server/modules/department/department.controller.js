@@ -36,7 +36,27 @@ export const singleDepartment = async (req, res) => {
     } catch (error) {
         console.log("ERR: ", error)
     }
-} 
+}
+
+export const updateDepartment = async (req, res) => {
+    const { _id, name, hodName } = req.body
+    try {
+        const dept = await Department.findByIdAndUpdate({ _id }, {name, hodName}, {new: true})
+        if (!dept)
+            return res.send({
+                status: false,
+                message: "Failed to update department"
+            })
+            
+        return res.send({
+            status: true,
+            message: "Department has been updated"
+        })
+        
+    } catch (error) {
+        console.log("ERR: ", error)
+    }
+}
 
 export const addDepartment = async (req, res) => {
     const { name, hodName } = req.body
