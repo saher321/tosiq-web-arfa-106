@@ -12,26 +12,27 @@ export const getStudents = async (req, res) => {
 
 export const addStudent = async (req, res) => {
     const { name, email, phone } = req.body
-    try {
-        const newStudent = await Student.create({ name, email, phone });
-        if (newStudent) {
-            return res.send({
-                status: true,
-                message: "Student added successfully"
-            }) 
-        } else {
-            return res.send({
-                status: false,
-                message: "Failed to add student"
-            }) 
-        }
-    } catch (error) {
-        console.log("Err: ", error)
-        return res.send({
-            status: false,
-            message: "Network error"
-        })
-    }
+    console.log(req.body)
+    // try {
+    //     const newStudent = await Student.create({ name, email, phone });
+    //     if (newStudent) {
+    //         return res.send({
+    //             status: true,
+    //             message: "Student added successfully"
+    //         }) 
+    //     } else {
+    //         return res.send({
+    //             status: false,
+    //             message: "Failed to add student"
+    //         }) 
+    //     }
+    // } catch (error) {
+    //     console.log("Err: ", error)
+    //     return res.send({
+    //         status: false,
+    //         message: "Network error"
+    //     })
+    // }
 }
 
 export const singleStudent = async (req, res) => {
