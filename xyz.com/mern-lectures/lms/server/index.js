@@ -1,11 +1,12 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import departmentRouter from './modules/department/department.route.js';
+import studentRouter from './modules/student/student.route.js';
 import cors from 'cors'
 import { connectDB } from './config/db.js';
 
-dotenv.config()
 
+dotenv.config()
 const PORT = process.env.PORT || 5000
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors())
 
 // http://localhost:5000/departments
 app.use('', departmentRouter)
+app.use('', studentRouter)
 
 app.get('/', (req, res) => {
     return res.send({
