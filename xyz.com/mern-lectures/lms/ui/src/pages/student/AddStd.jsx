@@ -16,9 +16,7 @@ const AddStd = () => {
   const getDepartments = async () => {
     try {
       const response = await axios.get(ALL_DEPT_API);
-      console.log(response.data);
       if (response.data.status == true) {
-        console.log(response.data.departments);
         setDepartments(response.data.departments);
       } else {
         console.error("Error in fetching request!");
@@ -33,8 +31,16 @@ const AddStd = () => {
   }, []);
 
   const handleAddStudent = async (data) => {
+    
     try {
-      const response = await axios.post(ADD_STD_API, data);
+      const newData = {
+        // image: data.image[0],
+        name: data.name,
+        deptId: data.deptId,
+        email: data.email,
+        phone: data.phone
+      }
+      const response = await axios.post(ADD_STD_API, newData);
       if (response.data.status == true) {
         toast.success(response.data.message);
         navigate("/admin/students");
@@ -61,7 +67,7 @@ const AddStd = () => {
       <div>
         <div className="min-h-screen flex justify-center">
           <div className="w-full">
-            <form onSubmit={handleSubmit(handleAddStudent)}>
+            <form onSubmit={handleSubmit(handleAddStudent)} encType="multipart/form-data">
               <div>
                 <label className="block mb-1">
                   Image

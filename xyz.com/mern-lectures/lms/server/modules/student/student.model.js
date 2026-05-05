@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const studentSchema = new mongoose.Schema({
     image: {
         type: String,
-        required: true
+        required: false
     },
     name: {
         type: String,

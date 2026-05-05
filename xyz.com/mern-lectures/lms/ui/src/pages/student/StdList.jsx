@@ -3,14 +3,29 @@ import AdminLayout from "../../layouts/AdminLayout";
 import PageTitle from "../../components/PageTitle";
 import { Link, useNavigate } from "react-router";
 import axios from "axios";
-import { ALL_STD_API } from "../../utils/api.js";
+import { ALL_DEPT_API, ALL_STD_API, DEL_STD_API } from "../../utils/api.js";
 import toast from "react-hot-toast";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 import noImage from "../../assets/user-profile.jpg";
 
 const StdList = () => {
   const [students, setStudents] = useState([]);
+  const [departments, setDepartments] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getDepartments = async () => {
+      try {
+        const response = await axios.get(ALL_DEPT_API);
+        setDepartments(response.data.departments);
+      } catch (error) {
+        toast.error("Failed to fetch departments!");
+        console.error("ERR: ", error);
+      }
+    };
+
+    getDepartments();
+  }, []);
 
   const getStudents = async () => {
     try {
@@ -29,6 +44,11 @@ const StdList = () => {
   useEffect(() => {
     getStudents();
   }, []);
+
+  const getDepartmentName = (deptId) => {
+    const department = departments.find((dept) => dept._id === deptId);
+    return department ? department.name : "N/A";
+  }
 
   const handleDelete = async (id) => {
     try {
@@ -108,7 +128,7 @@ const StdList = () => {
 
                         {/* Department */}
                         <td className="py-3 px-4 text-gray-600">
-                          {student.department || "N/A"}
+                          {getDepartmentName(student.department)}
                         </td>
 
                         {/* Email */}
