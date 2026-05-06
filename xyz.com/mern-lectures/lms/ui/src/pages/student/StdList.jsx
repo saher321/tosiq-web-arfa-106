@@ -31,6 +31,7 @@ const StdList = () => {
     try {
       const response = await axios.get(ALL_STD_API);
       if (response.data.status == true) {
+        console.log(response.data.students)
         setStudents(response.data.students);
       } else {
         toast.error(response.data.message);
@@ -114,11 +115,19 @@ const StdList = () => {
                         
                         {/* Image */}
                         <td className="py-3 px-4 font-medium text-gray-800">
+                          { student.image ?
                           <img
-                            src={student.image || noImage}
+                            src={student.image.match('https://') ? student.image : `http://localhost:5000/uploads/${student.image}` }
+                            alt={student.name}
+                            className="w-12 h-12 rounded-full object-cover"
+                          /> :
+                          <img
+                            src={noImage}
                             alt={student.name}
                             className="w-12 h-12 rounded-full object-cover"
                           />
+
+                          }
                         </td>
 
                         {/* Name */}

@@ -19,7 +19,8 @@ export const addStudent = async (req, res) => {
         if (newStudent) {
             return res.send({
                 status: true,
-                message: "Student added successfully"
+                message: "Student added successfully",
+                file: req.file
             }) 
         } else {
             return res.send({

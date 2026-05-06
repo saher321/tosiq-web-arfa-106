@@ -33,14 +33,15 @@ const AddStd = () => {
   const handleAddStudent = async (data) => {
     
     try {
-      const newData = {
-        // image: data.image[0],
-        name: data.name,
-        deptId: data.deptId,
-        email: data.email,
-        phone: data.phone
-      }
-      const response = await axios.post(ADD_STD_API, newData);
+      const addStudent = new FormData()
+      addStudent.append('image', data.image[0])
+      addStudent.append('name', data.name)
+      addStudent.append('deptId', data.deptId)
+      addStudent.append('email', data.email)
+      addStudent.append('phone', data.phone)
+
+      const response = await axios.post(ADD_STD_API, addStudent);
+      console.log(response.data)
       if (response.data.status == true) {
         toast.success(response.data.message);
         navigate("/admin/students");
@@ -75,6 +76,7 @@ const AddStd = () => {
                 <TextField
                   {...register("image")}
                   type="file"
+                  accept=".png, .jpeg"
                   hint="Enter student image URL"
                   classes="w-1/2"
                 />
