@@ -14,10 +14,9 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
-
+// http://localhost:5000/uploads/lms-1778075462906.jpg
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // http://localhost:5000/departments
