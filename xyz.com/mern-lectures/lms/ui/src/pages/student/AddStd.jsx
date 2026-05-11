@@ -7,6 +7,7 @@ import TextField from "../../components/TextField.jsx";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { ADD_STD_API, ALL_DEPT_API } from "../../utils/api.js";
+import ActionButton from "../../components/ActionButton.jsx";
 
 const AddStd = () => {
   const [departments, setDepartments] = useState([]);
@@ -123,12 +124,7 @@ const AddStd = () => {
               </div>
 
               <div className="mt-4">
-                <button
-                  type="submit"
-                  className="cursor-pointer bg-gray-900 text-white px-6 py-3 rounded-lg"
-                >
-                  Add student
-                </button>
+                  <ActionButton text="Add student" />
               </div>
             </form>
           </div>

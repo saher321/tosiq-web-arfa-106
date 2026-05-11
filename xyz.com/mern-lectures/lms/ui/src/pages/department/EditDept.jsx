@@ -7,6 +7,7 @@ import TextField from "../../components/TextField";
 import axios from "axios";
 import { EDIT_DEPT_API, UPDATE_DEPT_API } from "../../utils/api.js";
 import toast from "react-hot-toast";
+import ActionButton from "../../components/ActionButton.jsx";
 
 const EditDept = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -80,12 +81,7 @@ const EditDept = () => {
               </div>
 
               <div>
-                <button
-                  type="submit"
-                  className="cursor-pointer bg-gray-900 text-white px-6 py-3 rounded-lg"
-                >
-                  Edit department
-                </button>
+                  <ActionButton text="Edit department" />
               </div>
             </form>
           </div>
