@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 const Login = () => {
   return (
     <AuthLayout>
-        <div className='font-bold text-4xl'>Welcome to back</div>
+        <div className='font-bold text-4xl'>Welcome back</div>
         <span className='text-gray-700'>Login to continue</span>
 
         <div>

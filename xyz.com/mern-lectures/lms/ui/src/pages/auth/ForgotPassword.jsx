@@ -23,7 +23,7 @@ const ForgotPassword = () => {
 
                 <div className='flex items-center gap-3'>
                   <ActionButton text="Send otp" />
-                  <Link className='hover:text-blue-600' to={'/auth/login'}>Already have an account? Signup</Link>
+                  <Link className='hover:text-blue-600' to={'/auth/login'}>Already have an account? Login</Link>
                 </div>
             </form>
         </div>
