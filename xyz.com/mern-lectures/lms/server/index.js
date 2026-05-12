@@ -6,6 +6,7 @@ import cors from 'cors'
 import { connectDB } from './config/db.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import authRouter from './modules/auth/auth.route.js';
 
 dotenv.config()
 const PORT = process.env.PORT || 5000
@@ -20,6 +21,7 @@ const __dirname = path.dirname(__filename);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // http://localhost:5000/departments
+app.use('', authRouter)
 app.use('', departmentRouter)
 app.use('', studentRouter)
 
