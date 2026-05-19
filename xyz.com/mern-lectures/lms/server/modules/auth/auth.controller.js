@@ -1,5 +1,9 @@
 import User from "./auth.model.js"
 import bcrypt from "bcryptjs";
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+dotenv.config()
+
 export const register = async (req, res) => {
     const { fullname, email, password } = req.body
     if (!fullname || !email || !password) {
@@ -48,7 +52,48 @@ export const register = async (req, res) => {
 }
 
 export const login = async (req, res) => {
-    
+    const { email, password } = req.body
+    if (!email || !password) {
+        return res.send({
+            status: false,
+            message: "All fields are required"
+        })
+    }
+
+    try {
+        const user = await User.findOne({ email })
+        if (!user) {
+            return res.send({
+                status: false,
+                message: "User doesn't exist with this email"
+            })
+        }
+        // ali1234
+        // $fhshfs898hff.rrf9-44f44f4f4
+        const salt = await bcrypt.genSalt(10);
+        const isMatched = await bcrypt.compare(password, user.password);
+        if (!isMatched) {
+            return res.send({
+                status: false,
+                message: "Your password is miss-matched"
+            })
+        }
+
+        const token = jwt.sign(
+            { user: { id: user._id, name: user.fullname, email: user.email  } }, 
+            process.env.SECRET_KEY, 
+            { expiresIn: "7d" });
+        // duig220fh2fh9c2fd22f2ffw-r23.f23f23f2df7yffw.3f3cf3hnbyb09b9
+        return res.send({
+            status: true,
+            message: "Loggedin successful",
+            token
+        })
+        
+    } catch (error) {
+        
+        console.log("ERR:", error)
+    }
 }
 
 export const forgotPassword = async (req, res) => {
