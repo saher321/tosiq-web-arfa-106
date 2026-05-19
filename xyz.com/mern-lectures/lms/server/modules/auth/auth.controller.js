@@ -2,6 +2,7 @@ import User from "./auth.model.js"
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
+import { sendEmail } from "../../utils/common.js";
 dotenv.config()
 
 export const register = async (req, res) => {
@@ -84,6 +85,10 @@ export const login = async (req, res) => {
             process.env.SECRET_KEY, 
             { expiresIn: "7d" });
         // duig220fh2fh9c2fd22f2ffw-r23.f23f23f2df7yffw.3f3cf3hnbyb09b9
+        const html = `
+        Your account has been loggedin, if this was not you then contact to system administrator
+        `
+        sendEmail(user.email, "Login alert message", html)
         return res.send({
             status: true,
             message: "Loggedin successful",
