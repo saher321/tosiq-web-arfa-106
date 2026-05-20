@@ -88,7 +88,8 @@ export const login = async (req, res) => {
         const html = `
         Your account has been loggedin, if this was not you then contact to system administrator
         `
-        sendEmail(user.email, "Login alert message", html)
+        // sendEmail(user.email, "Login alert message", html)
+
         return res.send({
             status: true,
             message: "Loggedin successful",
@@ -141,5 +142,43 @@ export const forgotPassword = async (req, res) => {
 }
 
 export const resetPassword = async (req, res) => {
-    
+    const { email, otp, newPassword } = req.body
+    if (!otp || !newPassword) {
+        return res.send({
+            status: false,
+            message: "All fields are required"
+        })
+    }
+    try {
+        const user = await User.findOne({ email })
+        if (!user) {
+            return res.send({
+                status: false,
+                message: "User doesn't exist with this email"
+            })
+        }
+
+        if (user.otp != otp) {
+            return res.send({
+                status: false,
+                message: "OTP code is invalid"
+            })
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        const encPassword = await bcrypt.hash(newPassword, salt);
+
+        user.password = encPassword
+        user.otp = null
+        user.is_otp_verified = true
+        await user.save()
+
+        return res.send({
+            status: true,
+            message: "Your password has been reset"
+        })
+        
+    } catch (error) {
+        console.log("ERR:", error)
+    }
 }
