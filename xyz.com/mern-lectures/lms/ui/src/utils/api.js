@@ -3,6 +3,8 @@ const BASE_URL = "http://localhost:5000"
 // auth
 export const REGISTER_API       = BASE_URL + '/auth/signup'
 export const LOGIN_API          = BASE_URL + '/auth/login'
+export const FORGOT_PASSWORD_API= BASE_URL + '/auth/forgot-password'
+export const RESET_PASSWORD_API = BASE_URL + '/auth/reset-password'
 
 // department apis
 export const ALL_DEPT_API       = BASE_URL + '/departments'

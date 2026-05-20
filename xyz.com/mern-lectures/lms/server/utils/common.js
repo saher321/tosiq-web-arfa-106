@@ -1,6 +1,14 @@
 import nodemailer from 'nodemailer'
+import { customAlphabet } from 'nanoid'
 import dotenv from 'dotenv'
 dotenv.config()
+
+
+export const generateOTP = () => {
+    const nanoid = customAlphabet('1234567890', 6)
+    const otpCode = nanoid() //=> "123456"
+    return otpCode
+}
 
 export const sendEmail = async (to, subject, html) => {
     try {

@@ -2,7 +2,7 @@ import User from "./auth.model.js"
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import { sendEmail } from "../../utils/common.js";
+import { generateOTP, sendEmail } from "../../utils/common.js";
 dotenv.config()
 
 export const register = async (req, res) => {
@@ -102,7 +102,42 @@ export const login = async (req, res) => {
 }
 
 export const forgotPassword = async (req, res) => {
-    
+    const { email } = req.body
+    if (!email) {
+        return res.send({
+            status: false,
+            message: "Provide valid email"
+        })
+    }
+    try {
+        const user = await User.findOne({ email })
+        if (!user) {
+            return res.send({
+                status: false,
+                message: "User doesn't exist with this email"
+            })
+        }
+
+        const otp = generateOTP()
+        const content = `
+        Your requested OTP code <br>
+        <h3> ${otp} </h3>
+        <em> <strong>Note: Please do not share this OTP to anyone</strong> </em>
+        `
+        user.otp = otp
+        user.is_otp_verified = false
+        await user.save()
+
+        sendEmail(user.email, "Reset password OTP 🔑", content)
+
+        return res.send({
+            status: true,
+            message: "OTP send to your email"
+        })
+        
+    } catch (error) {
+        console.log("ERR:", error)
+    }
 }
 
 export const resetPassword = async (req, res) => {
