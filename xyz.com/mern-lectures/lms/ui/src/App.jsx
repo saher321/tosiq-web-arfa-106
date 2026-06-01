@@ -21,7 +21,7 @@ const App = () => {
       <Route path={`/auth/forgot-password`} element={<ForgotPassword />} />
       <Route path={`/auth/reset-password`} element={<ResetPassword />} />
 
-      <Route path={`${PREFIX}/dashboard`} index={true} element={<Dashboard />}/>
+      <Route path={`/`} index={true} element={<Dashboard />}/>
       <Route path={`${PREFIX}/departments`} element={<DeptList />}/>
       <Route path={`${PREFIX}/departments/create`} element={<AddDept />}/>
       <Route path={`${PREFIX}/departments/edit/:id`} element={<EditDept />}/>

@@ -7,6 +7,7 @@ import AdminLayout from "../../layouts/AdminLayout";
 import { BsPencil, BsPencilSquare, BsTrash } from "react-icons/bs";
 import PageTitle from "../../components/PageTitle.jsx";
 import { Link, useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const DeptList = () => {
   const [departments, setDepartments] = useState([]);
@@ -34,9 +35,15 @@ const DeptList = () => {
   const handleDelete = async (id) => {
     console.log(id);
     try {
-      const response = await axios.delete(DEL_DEPT_API + `/${id}`);
+      const response = await axios.delete(DEL_DEPT_API + `/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("lms_token")}`,
+        }
+      });
       if (response.data.status == true) {
         await getDepartments();
+      } else {
+        toast.error(response.data.message)
       }
     } catch (error) {
       console.log("Err: ", error);

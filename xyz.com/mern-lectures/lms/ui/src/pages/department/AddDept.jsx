@@ -15,7 +15,11 @@ const AddDept = () => {
 
     const handleAddDepartment = async (data) => {
         try {
-            const response = await axios.post(ADD_DEPT_API, data)
+            const response = await axios.post(ADD_DEPT_API, data, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("lms_token")}`,
+              }
+            })
             if (response.data.status == true) {
                 toast.success(response.data.message)
                 navigate("/admin/departments")

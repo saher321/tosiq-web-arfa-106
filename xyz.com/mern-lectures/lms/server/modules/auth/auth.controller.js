@@ -93,7 +93,8 @@ export const login = async (req, res) => {
         return res.send({
             status: true,
             message: "Loggedin successful",
-            token
+            user,
+            token,
         })
         
     } catch (error) {

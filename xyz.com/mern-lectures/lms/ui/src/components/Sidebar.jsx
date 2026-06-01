@@ -11,7 +11,7 @@ const Sidebar = () => {
       <nav className="flex flex-col items-center mt-6 space-y-6">
         
         <SidebarLinkIcon 
-          url="/admin/dashboard" 
+          url="/" 
           icon={<BsGrid size={24} className="inline -mt-[3px]" />} 
         />
 
