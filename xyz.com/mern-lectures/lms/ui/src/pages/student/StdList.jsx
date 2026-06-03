@@ -53,7 +53,9 @@ const StdList = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(DEL_STD_API + `/${id}`);
+      const response = await axios.delete(DEL_STD_API + `/${id}`, {
+        headers
+      });
       if (response.data.status == true) {
         toast.success(response.data.message);
         await getStudents();

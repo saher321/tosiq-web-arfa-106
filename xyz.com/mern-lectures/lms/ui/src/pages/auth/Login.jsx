@@ -7,9 +7,11 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { LOGIN_API } from "../../utils/api";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
+  const { login } = useAuth()
   const navigate = useNavigate();
 
   const handleLogin = async (data) => {
@@ -18,8 +20,7 @@ const Login = () => {
       console.log(response.data);
       if (response.data.status == true) {
         toast.success(response.data.message);
-        localStorage.setItem("lms_token", response.data.token);
-        localStorage.setItem("lms_user", JSON.stringify(response.data.user));
+        login(response.data.token, response.data.user);
         navigate("/");
       } else {
         toast.error(response.data.message);

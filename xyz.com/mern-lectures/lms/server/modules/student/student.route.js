@@ -2,6 +2,7 @@ import express from 'express'
 import { getStudents, delStudent, addStudent, singleStudent, updateStudent } from './student.controller.js'
 import multer from "multer"
 import path from 'path'
+import { authMiddleware } from '../../middlewares/authMiddleware.js'
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
